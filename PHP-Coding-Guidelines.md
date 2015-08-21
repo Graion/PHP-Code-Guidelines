@@ -77,7 +77,7 @@ es preferible sobre:
 	$b = 'sentence';
 	$text = "this is a $b";
 Aunque no debe ser siempre asi.
-Es, sin embargo, mas conveniente usar comillas simples si el string contiene comillas dobles. 
+Es, sin embargo, mas conveniente usar comillas simples si el string contiene comillas dobles.
 
 ### Definiendo arrays
 
@@ -124,3 +124,175 @@ Los "returns" NO DEBEN tener rodeado el valor devuelto con parentesis. Los valor
 ### Nomenclatura
 Solo los metodos magicos PODRIAN empezar con uno o mas guiones bajos.
 Para mejorar la visibilidad de quien no esté utilizando un IDE sugerimos: solo las funciones protected y privadas PODRIAN empezar con guion bajo.
+
+Buenas Prácticas
+----------------
+
+### Usar Composer!
+
+### Documentar el código
+
+Programar es una actividad de grupo y es importante que nos comuniquemos bien,
+tanto fuera como dentro del código. La mejor manera de lograr una buena
+comunicación dentro del código de un proyecto es documentar los métodos y de ser
+necesario, la funcionalidad interna si esta no fuera evidente solo con el código
+escrito.
+
+Igual de importante es no repetir en comentario lo que el código expresa bién
+por sí solo. Be DRY (Don't Repeat Yourself)!
+
+### Leverage the community
+
+La comunidad de PHP crece y se perfecciona cada día, si existe una herramienta
+que hace lo que necesitamos, usémosla! No re-inventemos la rueda a menos que sea
+muy necesario.
+
+### Seguir los principios SOLID
+
+Siguiendo estos principios nos aseguramos que nuestro código sea lo más limpio y
+flexíble posible.
+
+#### Single responsibility
+
+Cada clase tiene que tenér un único propósito.
+
+#### Open-Closed
+
+Una clase tiene que estár abierta (Open) para extensión y cerrada (Closed) para
+modificación.
+
+Si una clase depende de un `switch` o `if`s tener en cuenta distintos casos,
+quiere decir que si el día de mañana necesitamos tener en cuenta un caso extra,
+tenemos que modificar la clase, efectivamente rompiendo este principio.
+
+Para lograr resolver esto, es mejor dar vuelta las responsabilidades y usar
+interfases para ocultar implementaciones particulares.
+
+Este ejemplo rompe con este principio, ya que si necesitaramos poder renderizar
+a HTML o más formatos, tendríamos que modificar esta clase.
+
+```php
+<?php
+class Output
+{
+    private $data;
+
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    public function setData(array $data)
+    {
+        $this->data = $data;
+    }
+
+    public function render($format = 'xml')
+    {
+        $out = '';
+        $data = $this->getData();
+
+        switch ($format)
+        {
+            case 'json':
+                $out = json_encode($data);
+                break;
+
+            case 'xml':
+                $out = '<data>';
+
+                foreach ($data as $value)
+                {
+                    $out .= '<value>' . $value . '</value>';
+                }
+
+                $out .= '</data>';
+                break;
+
+            default:
+                throw new Exception("Unexpected format [$format]");
+        }
+
+        return $out;
+    }
+}
+?>
+```
+
+En este caso es preferible delegar la responsabilida del render a otra clase y
+dejar que Output se encargue simplemente de usarla:
+
+```php
+<?php
+
+interface Renderer
+{
+    public function render(array $data);
+}
+
+class JsonRenderer implements Renderer
+{
+    public function render(array $data)
+    {
+        return json_encode($data);
+    }
+}
+
+class XmlRenderer implements Renderer
+{
+    public function render(array $data)
+    {
+        $out = '<data>';
+
+        foreach ($data as $value)
+        {
+            $out .= '<value>' . $value . '</value>';
+        }
+
+        $out .= '</data>';
+
+        return $out;
+    }
+}
+
+class Output
+{
+    // ...
+
+    public function render(Renderer $renderer)
+    {
+        return $renderer->render($this->getData());
+    }
+}
+
+?>
+```
+
+Si estuvieron atentos, se habrán dado cuenta de que éste no es el único
+principio que estában siendo trasgredido. En general, al caer uno, cae el resto.
+
+Al solucionarlo de esta manera, Output ya no tiene la responsabilidad extra de
+resolver el renderizado de su data, efectivamente resolviendo también una
+violación al Single Responsability.
+
+#### Liskov Substitution
+
+A subclass' preconditions should be at least as weak and its postconditions
+should be at least as strong as its parent.
+
+#### Interface Segregation
+
+Una clase no debería depender de otra clase con un grán número de métodos de los
+cuales solo usa algunos.
+
+Es mejor separar esas estos métodos
+
+#### Dependency Inversion
+
+A that defines an abstract or high-level functionality should never depend on
+any class or method that defines a concrete or low-level functionality.
+
+### Dividir métodos largos en varios métodos más chicos
+
+### Composición sobre herencia
+
