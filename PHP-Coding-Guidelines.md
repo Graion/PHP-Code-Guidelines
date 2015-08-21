@@ -56,7 +56,10 @@ se restablezca a su valor original.
 
 ### Sentencias que abarquen multiples lineas DEBEN ser identadas y empezar con un operador
 
-Cuando una sentencia es demasiado larga para ser legible en una linea, deberia ser cortada. Cuando cortas una sentencia, es mejor que la siguientes lineas esten identadas y empiecen con un operador, identificando facilmente que pertenecen a la linea anterior. Por ejemplo;
+Cuando una sentencia es demasiado larga para ser legible en una linea, deberia
+ser cortada. Cuando cortas una sentencia, es mejor que la siguientes lineas
+esten identadas y empiecen con un operador, identificando facilmente que
+pertenecen a la linea anterior. Por ejemplo;
 	$someVar = 'this is a very long line of text that wraps '
 		. 'onto the next line';
 	y
@@ -68,7 +71,10 @@ Cuando una sentencia es demasiado larga para ser legible en una linea, deberia s
 
 ### Quoting strings
 
-PHP permite el uso de comillas simples (') y dobles (") cuando usamos strings. Es recomendado usar comillas simples en la mayoria, pero no en todos, los casos. Mientras que las comillas dobles son convenientes porque permiten la substitucion de variables, las comillas simples son mejores para la legibilidad.
+PHP permite el uso de comillas simples (') y dobles (") cuando usamos strings.
+Es recomendado usar comillas simples en la mayoria, pero no en todos, los casos.
+Mientras que las comillas dobles son convenientes porque permiten la
+substitucion de variables, las comillas simples son mejores para la legibilidad.
 
 Usando el siguiente ejemplo:
 	$b = 'sentence';
@@ -77,38 +83,52 @@ es preferible sobre:
 	$b = 'sentence';
 	$text = "this is a $b";
 Aunque no debe ser siempre asi.
-Es, sin embargo, mas conveniente usar comillas simples si el string contiene comillas dobles.
+Es, sin embargo, mas conveniente usar comillas simples si el string contiene
+comillas dobles.
 
 ### Definiendo arrays
 
-Cuando se define un array el corchete de inicio NO DEBE tener un espacio antes. Es RECOMENDADO que sea seguido por una linea nueva, aunque los arrays pequeños PODRIAN ser definidos con multiples valores en una linea. Tambien es RECOMENDADO que el corchete de cierre este en una nueva linea. Ejemplos:
+Cuando se define un array el corchete de inicio NO DEBE tener un espacio antes.
+Es RECOMENDADO que sea seguido por una linea nueva, aunque los arrays pequeños
+PODRIAN ser definidos con multiples valores en una linea. Tambien es RECOMENDADO
+que el corchete de cierre este en una nueva linea. Ejemplos:
 
 $user = [
 	'name' => 'John',
 	'address' => '123 Main St.'
 ];
-Lo anterior es preferible, aunque lo siguiente esta permitido ya que es la definicion de un pequeño array:
+Lo anterior es preferible, aunque lo siguiente esta permitido ya que es la
+definicion de un pequeño array:
 
 $user = ['name' => 'John', 'address' => '123 Main St.'];
 
-De ser posible utilizar la sintaxis corta [] para definir arrays en lugar de array().
+De ser posible utilizar la sintaxis corta [] para definir arrays en lugar de
+array().
 
 ### Comentarios
-Comentarios de linea-simple C (//) y multi-linea C (/* */) estan permitidos. Comentarios Perl (#) no lo estan.
+Comentarios de linea-simple C (//) y multi-linea C (/* */) estan permitidos.
+Comentarios Perl (#) no lo estan.
 
 ### Variables
 
-Los nombres de variables DEBERIAN ser descriptivos y no contener abreviaturas. Las variables que representan valores escalares DEBERIAN ser en minusculas y con las palabras separadas por guiones bajos. Las variables que representen objetos DEBERIAN ser camel-case con la primer letra de cada palabra (excepto la primera) en mayuscula. Ejemplo:
+Los nombres de variables DEBERIAN ser descriptivos y no contener abreviaturas.
+Las variables que representan valores escalares DEBERIAN ser en minusculas y con
+las palabras separadas por guiones bajos. Las variables que representen objetos
+DEBERIAN ser camel-case con la primer letra de cada palabra (excepto la primera)
+en mayuscula. Ejemplo:
 	$minimum_bid = 5;
 	$sectionBundle = new SectionBundle();
-Las propiedades de los objetos, sin embargo, DEBERIAN siempre ser camel-case independientemente del valor.
+Las propiedades de los objetos, sin embargo, DEBERIAN siempre ser camel-case
+independientemente del valor.
 
 ### Global State
 La creacion de variables globales es altamente desalentado y DEBERIA ser evitado.
 Igual que los Singletons, que DEBERIAN ser evitados a cualquier costo. ಠ_ಠ
 
 ### Constantes
-Las contstantes DEBERIAN estar en mayuscula, los guiones bajos DEBEN ser usador para separar palabras (ej. INLUDE_PATH). Las constantes NO DEBEN empezar o terminar con guion bajo.
+Las contstantes DEBERIAN estar en mayuscula, los guiones bajos DEBEN ser usador
+para separar palabras (ej. INLUDE_PATH). Las constantes NO DEBEN empezar o
+terminar con guion bajo.
 
 ### Estructuras de control
 Switch
@@ -116,14 +136,19 @@ El switch DEBERIA incluir el default case y DEBE estar ubicado en el final.
 
 Funciones, Metodos y Closures
 ------------------------------
-Esta seccion esbozará las mejores practicas cuando llamamos y definimos funciones, metodos y closures.
+Esta seccion esbozará las mejores practicas cuando llamamos y definimos
+funciones, metodos y closures.
 
 ### Return
-Los "returns" NO DEBEN tener rodeado el valor devuelto con parentesis. Los valores devueltos DEBEN ser consistentes; una funcion que devuelve un array de objetos DEBERIA deolver un array aunque este contenga solo u objeto. Una funcion DEBERIA lanzar una excepción si se produce un error irrecuperable.
+Los "returns" NO DEBEN tener rodeado el valor devuelto con parentesis. Los
+valores devueltos DEBEN ser consistentes; una funcion que devuelve un array de
+objetos DEBERIA deolver un array aunque este contenga solo u objeto. Una funcion
+DEBERIA lanzar una excepción si se produce un error irrecuperable.
 
 ### Nomenclatura
 Solo los metodos magicos PODRIAN empezar con uno o mas guiones bajos.
-Para mejorar la visibilidad de quien no esté utilizando un IDE sugerimos: solo las funciones protected y privadas PODRIAN empezar con guion bajo.
+Para mejorar la visibilidad de quien no esté utilizando un IDE sugerimos: solo
+las funciones protected y privadas PODRIAN empezar con guion bajo.
 
 Buenas Prácticas
 ----------------
