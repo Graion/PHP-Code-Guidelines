@@ -24,18 +24,18 @@ desarrollo DEBEN configurar error reporing a `E_ALL`. `Notices` y `Warnings` son
 una indicación de que el código no está optimizado y pueden depender de los
 caprichos del lenguaje PHP.
 
-### Todos los archivos DEBEN empezar con `<?php`
+### Todos los archivos DEBEN empezar con `
 
-Todos los archivos PHP DEBEN comenzar con la etiqueta PHP apertura `<?php`.
-NO DEBEN utilizar la forma abreviada `<?` ni la forma de `echo` corta `<?="algo"?>`.
+Todos los archivos PHP DEBEN comenzar con la etiqueta PHP apertura `.
+NO DEBEN utilizar la forma abreviada `<?` ni la forma de `echo` corta `<?="algo`.
 
-### Los archivos PHP NO DEBEN tener tag de cierre de PHP `?>`
+### Los archivos PHP NO DEBEN tener tag de cierre de PHP `
 
 Los archivos PHP son sintácticamente correctos cierren la etiqueta PHP al final
 o no. Si un desarrollador introdujera un espacio después de la etiqueta de
 cierre, causaría el famoso error `"Cannot modify header information – headers
 already sent"`. Con el fin de impedir que esto suceda se DEBE omitir la
-etiqueta PHP de cierre `?>`.
+etiqueta PHP de cierre `.
 
 Cuestiónes Básicas
 ------------------
@@ -60,14 +60,17 @@ Cuando una sentencia es demasiado larga para ser legible en una linea, deberia
 ser cortada. Cuando cortas una sentencia, es mejor que la siguientes lineas
 esten identadas y empiecen con un operador, identificando facilmente que
 pertenecen a la linea anterior. Por ejemplo;
-	$someVar = 'this is a very long line of text that wraps '
-		. 'onto the next line';
-	y
-		if (($a > 4 && stristr($text, 'sentence'))
-			|| $a <= 4
-		) {
-			…
-		}
+
+```php
+$someVar = 'this is a very long line of text that wraps '
+    . 'onto the next line';
+
+if (($a > 4 && stristr($text, 'sentence'))
+    || $a <= 4
+) {
+    …
+}
+```
 
 ### Quoting strings
 
@@ -77,13 +80,21 @@ Mientras que las comillas dobles son convenientes porque permiten la
 substitucion de variables, las comillas simples son mejores para la legibilidad.
 
 Usando el siguiente ejemplo:
-	$b = 'sentence';
-	$text = 'this is a ' . $b;
+
+```php
+$b = 'sentence';
+$text = 'this is a ' . $b;
+```
+
 es preferible sobre:
-	$b = 'sentence';
-	$text = "this is a $b";
+
+```php
+$b = 'sentence';
+$text = "this is a $b";
+```
+
 Aunque no debe ser siempre asi.
-Es, sin embargo, mas conveniente usar comillas simples si el string contiene
+Es, sin embargo, mas conveniente usar comillas simples si la string contiene
 comillas dobles.
 
 ### Definiendo arrays
@@ -93,21 +104,32 @@ Es RECOMENDADO que sea seguido por una linea nueva, aunque los arrays pequeños
 PODRIAN ser definidos con multiples valores en una linea. Tambien es RECOMENDADO
 que el corchete de cierre este en una nueva linea. Ejemplos:
 
+```php
 $user = [
-	'name' => 'John',
-	'address' => '123 Main St.'
+    'name' => 'John',
+    'address' => '123 Main St.',
 ];
+```
+
+Si, cómo en el caso anterior, los ítems estan separados cada uno en su línea, es
+RECOMENDADO dejar una coma (,) al final de la ultima línea para facilitar la
+adición de ítems.
+
 Lo anterior es preferible, aunque lo siguiente esta permitido ya que es la
 definicion de un pequeño array:
 
+```php
 $user = ['name' => 'John', 'address' => '123 Main St.'];
+```
 
-De ser posible utilizar la sintaxis corta [] para definir arrays en lugar de
-array().
+De ser posible utilizar la sintaxis corta `[]` para definir arrays en lugar de
+`array()`.
 
 ### Comentarios
-Comentarios de linea-simple C (//) y multi-linea C (/* */) estan permitidos.
-Comentarios Perl (#) no lo estan.
+
+Comentarios de linea-simple estilo C (`//`) y multi-linea estilo C (`/* */`) estan
+permitidos.
+Comentarios estilo Perl (`#`) no lo estan.
 
 ### Variables
 
@@ -116,36 +138,47 @@ Las variables que representan valores escalares DEBERIAN ser en minusculas y con
 las palabras separadas por guiones bajos. Las variables que representen objetos
 DEBERIAN ser camel-case con la primer letra de cada palabra (excepto la primera)
 en mayuscula. Ejemplo:
-	$minimum_bid = 5;
-	$sectionBundle = new SectionBundle();
+
+```php
+$minimum_bid = 5;
+$sectionBundle = new SectionBundle();
+```
+
 Las propiedades de los objetos, sin embargo, DEBERIAN siempre ser camel-case
 independientemente del valor.
 
 ### Global State
+
 La creacion de variables globales es altamente desalentado y DEBERIA ser evitado.
 Igual que los Singletons, que DEBERIAN ser evitados a cualquier costo. ಠ_ಠ
 
 ### Constantes
+
 Las contstantes DEBERIAN estar en mayuscula, los guiones bajos DEBEN ser usador
 para separar palabras (ej. INLUDE_PATH). Las constantes NO DEBEN empezar o
 terminar con guion bajo.
 
 ### Estructuras de control
-Switch
+
+#### Switch
+
 El switch DEBERIA incluir el default case y DEBE estar ubicado en el final.
 
 Funciones, Metodos y Closures
 ------------------------------
+
 Esta seccion esbozará las mejores practicas cuando llamamos y definimos
 funciones, metodos y closures.
 
 ### Return
+
 Los "returns" NO DEBEN tener rodeado el valor devuelto con parentesis. Los
 valores devueltos DEBEN ser consistentes; una funcion que devuelve un array de
 objetos DEBERIA deolver un array aunque este contenga solo u objeto. Una funcion
 DEBERIA lanzar una excepción si se produce un error irrecuperable.
 
 ### Nomenclatura
+
 Solo los metodos magicos PODRIAN empezar con uno o mas guiones bajos.
 Para mejorar la visibilidad de quien no esté utilizando un IDE sugerimos: solo
 las funciones protected y privadas PODRIAN empezar con guion bajo.
@@ -154,6 +187,8 @@ Buenas Prácticas
 ----------------
 
 ### Usar Composer!
+
+**ಠ_ಠ**
 
 ### Documentar el código
 
@@ -164,7 +199,7 @@ necesario, la funcionalidad interna si esta no fuera evidente solo con el códig
 escrito.
 
 Igual de importante es no repetir en comentario lo que el código expresa bién
-por sí solo. Be DRY (Don't Repeat Yourself)!
+por sí solo. Be **DRY** (Don't Repeat Yourself)!
 
 ### Leverage the community
 
@@ -197,7 +232,6 @@ Este ejemplo rompe con este principio, ya que si necesitaramos poder renderizar
 a HTML o más formatos, tendríamos que modificar esta clase.
 
 ```php
-<?php
 class Output
 {
     private $data;
@@ -241,15 +275,12 @@ class Output
         return $out;
     }
 }
-?>
 ```
 
 En este caso es preferible delegar la responsabilida del render a otra clase y
 dejar que Output se encargue simplemente de usarla:
 
 ```php
-<?php
-
 interface Renderer
 {
     public function render(array $data);
@@ -289,8 +320,6 @@ class Output
         return $renderer->render($this->getData());
     }
 }
-
-?>
 ```
 
 Si estuvieron atentos, se habrán dado cuenta de que éste no es el único
