@@ -17,3 +17,12 @@ Como proponer cambios
 
 - Si tenés una idea pero necestias ayuda para terminar de definirla, creá un
   ticket para que lo debatamos entre todos.
+
+_Cualquier duda, consulten con los autores._
+
+Autores
+-------
+
+- @xFlatlinex
+- @Fedeorlandau
+- @fedelevin
