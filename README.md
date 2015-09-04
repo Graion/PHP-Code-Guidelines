@@ -23,6 +23,6 @@ _Cualquier duda, consulten con los autores._
 Autores
 -------
 
-- @xFlatlinex
-- @Fedeorlandau
-- @fedelevin
+- [@xFlatlinex](https://github.com/xFlatlinex)
+- [@fedelevin](https://github.com/fedelevin)
+- [@Fedeorlandau](https://github.com/Fedeorlandau)
