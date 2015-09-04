@@ -24,18 +24,18 @@ desarrollo DEBEN configurar error reporing a `E_ALL`. `Notices` y `Warnings` son
 una indicación de que el código no está optimizado y pueden depender de los
 caprichos del lenguaje PHP.
 
-### Todos los archivos DEBEN empezar con `
+### Todos los archivos DEBEN empezar con `<?php`
 
-Todos los archivos PHP DEBEN comenzar con la etiqueta PHP apertura `.
-NO DEBEN utilizar la forma abreviada `<?` ni la forma de `echo` corta `<?="algo`.
+Todos los archivos PHP DEBEN comenzar con la etiqueta PHP apertura `<?php`.
+NO DEBEN utilizar la forma abreviada `<?` ni la forma de `echo` corta `<?="algo"?>`.
 
-### Los archivos PHP NO DEBEN tener tag de cierre de PHP `
+### Los archivos PHP NO DEBEN tener tag de cierre de PHP `?>`
 
 Los archivos PHP son sintácticamente correctos cierren la etiqueta PHP al final
 o no. Si un desarrollador introdujera un espacio después de la etiqueta de
 cierre, causaría el famoso error `"Cannot modify header information – headers
 already sent"`. Con el fin de impedir que esto suceda se DEBE omitir la
-etiqueta PHP de cierre `.
+etiqueta PHP de cierre `?>`.
 
 Cuestiónes Básicas
 ------------------
