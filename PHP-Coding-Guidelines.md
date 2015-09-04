@@ -59,7 +59,7 @@ se restablezca a su valor original.
 Cuando una sentencia es demasiado larga para ser legible en una linea, deberia
 ser cortada. Cuando cortas una sentencia, es mejor que la siguientes lineas
 esten identadas y empiecen con un operador, identificando facilmente que
-pertenecen a la linea anterior. Por ejemplo;
+pertenecen a la linea anterior. Por ejemplo:
 
 ```php
 $someVar = 'this is a very long line of text that wraps '
